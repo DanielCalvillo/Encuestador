@@ -21,14 +21,14 @@ function App() {
         />
         <Route
           exact
-          path="/addressConfirmation"
+          path="/survey/adress/confirm"
           render={ routeProps => (
             <AddressConfirmation {...routeProps}/>
           )}
         />
         <Route
           exact
-          path="/showSurveys"
+          path="/home/surveyor"
           render={ routeProps => (
             <ShowSurveys {...routeProps}/>
           )}

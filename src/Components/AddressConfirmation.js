@@ -1,53 +1,117 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
-  form: {
-    '& > *': {
-      margin: theme.spacing(1),
-      width: '25ch',
-    },
-  },
-  formItem:{
-    marginBottom: '1rem'
-  },
-  formNumbers: {
-    display: "flex",
-    flexDirection: 'row',
-    justifyContent: 'spaceBetween',
-    marginBottom: '1rem'
-  },
-  formNumberItem: {
-    marginRight: '1.5rem',
-  },
-  root:{
+  formHouseNumbers: {
     display: 'flex',
-    flexDirection: 'column'
+    justifyContent: 'center'
+
+  },
+  formExtNumber: {
+    marginRight: "20px"
   }
 }));
 
-function AddressConfirmation () {
-  const classes = useStyles();
+function AddressConfirmation() {
 
-  return (
-    <div className={classes.root}>
-      <h1>
-        Dirección
-      </h1>
-      <form className={classes.form} noValidate autoComplete="off">
+  const handleClick = e => {
+    console.log('Button was clicked');
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log('Form was submitted');
+    console.log(this.state);
+  };
+
+    const classes = useStyles();
+    return (
       <div>
-        <TextField className={classes.formItem} id="outlined-basic" label="calle" variant="outlined" />
-        <div className={classes.formNumbers}>
-          <TextField className={classes.formNumberItem} id="outlined-basic" label="#Exterior" variant="outlined" size='small' />
-          <TextField id="outlined-basic" label="#Interior" variant="outlined" size='small' />
-        </div>
-        <TextField className={classes.formItem} id="outlined-basic" label="Colonia" variant="outlined" />
-        <TextField className={classes.formItem} id="outlined-basic" label="Código Postal" variant="outlined" />
-      </div>    
-      </form>
-    </div>
-  )
+        <h1>Dirección</h1>
+
+        <form onSubmit={handleSubmit}>
+
+          <TextField
+            size="small"
+            label="calle"
+            fullWidth
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            variant="outlined"
+          />
+
+          <div className={classes.formHouseNumbers}>
+            <TextField
+            classes={{
+              root: classes.formExtNumber
+            }}
+            label="#Exterior"
+            size="small"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            variant="outlined"
+            margin='normal'
+            />
+            <TextField
+            label="#Interior"
+            size="small"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            variant="outlined"
+            margin='normal'
+            />
+          </div>
+
+          <TextField
+            size="small"
+            label="Colonia"
+            fullWidth
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            variant="outlined"
+          />
+
+          <TextField
+            size="small"
+            label="Código Postal"
+            fullWidth
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            variant="outlined"
+          />
+
+          <TextField
+            size="small"
+            label="Estado"
+            fullWidth
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            variant="outlined"
+          />
+
+          <Button 
+            variant="contained" 
+            color="primary" 
+            onClick={handleClick}
+            size="large"
+          >
+          Confirmar Dirección
+          </Button>
+        </form>
+      </div>
+    );
 }
 
 export default AddressConfirmation;

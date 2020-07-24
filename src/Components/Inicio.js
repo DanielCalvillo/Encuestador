@@ -66,7 +66,7 @@ function Inicio({dispatch, history}) {
       .then(result => {
         if(result.user.email){
           console.log(result.user.email)
-          history.push(`/encuesta`)
+          history.push(`/home/surveyor`)
         } else {
           alert('no existes :c')
           firebase.auth().signOut()
