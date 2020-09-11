@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import GoogleMaps from './location/GoogleMaps'
+import GoogleMaps from './GoogleMaps'
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function Address () {
+function AddressMap () {
   const classes = useStyles();
 
   return (
@@ -36,4 +36,4 @@ function Address () {
   )
 }
 
-export default Address;
+export default AddressMap;

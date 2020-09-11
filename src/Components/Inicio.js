@@ -13,19 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { connect } from 'react-redux'
 
-import * as firebase from 'firebase'
-
-const config = {
-  apiKey: "AIzaSyDF3GpYdbtYA-Jkj27R7qLVe_RONDPkHOI",
-  authDomain: "encuestascalvillo.firebaseapp.com",
-  databaseURL: "https://encuestascalvillo.firebaseio.com",
-  projectId: "encuestascalvillo",
-  storageBucket: "encuestascalvillo.appspot.com", 
-  messagingSenderId: "89954048228",
-  appId: "1:89954048228:web:3d36bf23a92b9a1be5f4f1",
-  measurementId: "G-68MLML2SE6"
-}
-firebase.initializeApp(config)
+import { Redirect } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -61,17 +49,14 @@ function Inicio({dispatch, history}) {
 
   function validarUsuario (e) {
     e.preventDefault()
-    dispatch({ type: 'SHOW_USER', email: emailValue, password: passwordValue})
-    firebase.auth().signInWithEmailAndPassword(emailValue, passwordValue)
-      .then(result => {
-        if(result.user.email){
-          console.log(result.user.email)
-          history.push(`/home/surveyor`)
-        } else {
-          alert('no existes :c')
-          firebase.auth().signOut()
-        }
-      })
+    console.log("si estoy entrando")
+
+    const schemaCredentials = {emailValue, passwordValue}
+    const URL_LOGIN = "https://back-end-cchavezmx.herokuapp.com/"
+    console.log({schemaCredentials, URL_LOGIN})
+    //lógica de autenticación
+    history.push("/home/surveyor")
+
   }
 
   return (
@@ -82,7 +67,7 @@ function Inicio({dispatch, history}) {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Log in
         </Typography>
         <form className={classes.form} noValidate onSubmit={validarUsuario}>
           <TextField

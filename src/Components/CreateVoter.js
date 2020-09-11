@@ -16,16 +16,14 @@ const styles = () => ({
   }
 });
 
-class AddressConfirmation extends Component {
+class CreateVoter extends Component {
   constructor(props){
     super(props)
     this.state= {
-      calle: "",
-      numExterior: "",
-      numInterior: "",
-      colonia: "",
-      codPostal: "",
-      estado: ""
+      nombre: "",
+      telefono: "",
+      correoElectronico: "",
+      fechaNacimiento: ""
     }
   }
 
@@ -48,109 +46,77 @@ class AddressConfirmation extends Component {
 
     render(){
       const { classes } = this.props;
-      const { calle, numExterior, numInteror, colonia, codPostal, estado } = this.state
+      const { nombre, telefono, correoElectronico, fechaNacimiento } = this.state
 
       return (
         <div>
-          <h1>Dirección</h1>
+          <h1>Encuestado</h1>
   
           <form onSubmit={this.handleSubmit}>
   
             <TextField
               onChange={this.handleChange}
               size="small"
-              label="calle"
+              label="Nombre"
               fullWidth
               margin="normal"
               InputLabelProps={{
                 shrink: true,
               }}
               variant="outlined"
-              name="calle"
-              value={calle}
-            />
-  
-            <div className={classes.formHouseNumbers}>
-              <TextField
-                onChange={this.handleChange}
-                classes={{
-                  root: classes.formExtNumber
-                }}
-                label="#Exterior"
-                size="small"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                variant="outlined"
-                margin='normal'
-                name="numExterior"
-                value={numExterior}
-              />
-
-              <TextField
-                onChange={this.handleChange}
-                label="#Interior"
-                size="small"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                variant="outlined"
-                margin='normal'
-                name="numInterior"
-                value={numInteror}
-              />
-            </div>
-  
-            <TextField
-              onChange={this.handleChange}
-              size="small"
-              label="colonia"
-              fullWidth
-              margin="normal"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              variant="outlined"
-              name="colonia"
-              value={colonia}
+              name="nombre"
+              value={nombre}
             />
   
             <TextField
               onChange={this.handleChange}
               size="small"
-              label="Código Postal"
+              label="Teléfono"
               fullWidth
               margin="normal"
               InputLabelProps={{
                 shrink: true,
               }}
               variant="outlined"
-              name="codPostal"
-              value={codPostal}
+              name="telefono"
+              value={telefono}
             />
   
             <TextField
               onChange={this.handleChange}
               size="small"
-              label="Estado"
+              label="Correo electrónico"
               fullWidth
               margin="normal"
               InputLabelProps={{
                 shrink: true,
               }}
               variant="outlined"
-              name="estado"
-              value={estado}
+              name="correoElectronico"
+              value={correoElectronico}
+            />
+  
+            <TextField
+              onChange={this.handleChange}
+              size="small"
+              label="Fecha de nacimiento"
+              fullWidth
+              margin="normal"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant="outlined"
+              name="fechaNacimiento"
+              value={fechaNacimiento}
             />
   
             <Button 
               type="submit"
               variant="contained" 
               color="primary" 
-              onClick={this.handleClick}
               size="large"
             >
-            Confirmar Dirección
+              Confirmar Datos
             </Button>
           </form>
         </div>
@@ -158,8 +124,8 @@ class AddressConfirmation extends Component {
     }
 }
 
-AddressConfirmation.propTypes = {
+CreateVoter.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(AddressConfirmation);
+export default withStyles(styles)(CreateVoter);

@@ -2,9 +2,10 @@ import React from 'react';
 import './App.css';
 import Encuesta from './Components/Encuesta';
 import Inicio from './Components/Inicio';
-import ShowSurveys from './Components/ShowSurveys'
-import AddressConfirmation from './Components/AddressConfirmation'
-import Address from './Components/Address'
+import ShowSurveys from './Components/mainMenu/ShowSurveys'
+import AddressConfirmation from './Components/location/AddressConfirmation'
+import AddressMap from './Components/location/AddressMap'
+import CreateVoter from './Components/CreateVoter';
 import {Route, Switch} from "react-router-dom";
 
 
@@ -14,16 +15,23 @@ function App() {
       <Switch>
         <Route
           exact
-          path="/address"
+          path="/address/map"
           render={ routeProps => (
-            <Address {...routeProps}/>
+            <AddressMap {...routeProps}/>
           )}
         />
         <Route
           exact
-          path="/survey/adress/confirm"
+          path="/survey/address/confirm"
           render={ routeProps => (
             <AddressConfirmation {...routeProps}/>
+          )}
+        />
+        <Route
+          exact
+          path="/survey/voter"
+          render={ routeProps => (
+            <CreateVoter {...routeProps}/>
           )}
         />
         <Route
