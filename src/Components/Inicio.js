@@ -60,27 +60,20 @@ function Inicio({dispatch, history}) {
 
     const schemaCredentials = {emailValue, passwordValue}
     const URL_LOGIN = "https://back-end-cchavezmx.herokuapp.com/api/v1/login"
-    console.log({schemaCredentials, URL_LOGIN})
+    //console.log({schemaCredentials, URL_LOGIN})
     //lógica de autenticación
-    // try {
-      // const respuesta = await fetch(URL_LOGIN,{method:'POST', headers:{ 'Content-Type': 'application/json'}, 
-          // mode: 'cors' , body: JSON.stringify(schemaCredentials) 
-      // })
-      // console.log(respuesta)
-      // const res = await respuesta.json()
+    try {
+      const respuesta = await fetch(URL_LOGIN,{method:'POST', headers:{ 'Content-Type': 'application/json'}, 
+          mode: 'cors' , body: JSON.stringify(schemaCredentials) 
+      })
+      const res = await respuesta.json()
       // setToken(res.response)
       // loginUser(res.response)
-      // console.log(res)
-      // history.push("/home/surveyor")
-    // } catch (error) {
-        // console.log(error)
-    // }
-    axios.post(URL_LOGIN, schemaCredentials).then( response => {
-      console.log(response)
+      console.log(res)
       history.push("/home/surveyor")
-    }).catch (e => {
-      console.log(e)
-    })
+    } catch (error) {
+        console.log(error)
+    }
 
   }
 
