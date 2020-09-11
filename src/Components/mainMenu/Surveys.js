@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import ListItem from '@material-ui/core/ListItem';
 import List from '@material-ui/core/List';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -9,16 +9,33 @@ function ListItemLink(props) {
 }
 
 function Surveys () {
+
+  useEffect( () => {
+    try {
+      const encuestas = [{}]
+    } catch {
+
+    }
+  })
+
   return (
     <div>
       <List component="nav" aria-label="surveys container">
-        <ListItemLink href="/survey">
+
+        <ListItemLink href="/survey" >
           <ListItemText primary="Partidarios Nueva oxtotitlan" />
         </ListItemLink>
+
+
+
         <Divider />
+
         <ListItemLink href="/survey">
           <ListItemText primary="Partidarios Colonia Roma" />
         </ListItemLink>
+
+
+
       </List>
     </div>
   )

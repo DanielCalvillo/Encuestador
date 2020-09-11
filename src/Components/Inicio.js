@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,8 +12,11 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { connect } from 'react-redux'
+import axios from 'axios'
 
 import { Redirect } from 'react-router-dom';
+
+// import { AuthContext } from '../contexts/AuthContext'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -40,6 +43,10 @@ function Inicio({dispatch, history}) {
   const [emailValue, setEmailValue] = useState('')
   const [passwordValue, setPasswordValue] = useState('')
 
+  const [token, setToken] = useState('')
+  //context
+  // const {loginUser} = useContext(AuthContext)
+
   function handleEmailChange(e){
     setEmailValue(e.target.value)
   }
@@ -47,15 +54,33 @@ function Inicio({dispatch, history}) {
     setPasswordValue(e.target.value)
   }
 
-  function validarUsuario (e) {
+  const validarUsuario = async (e) => {
     e.preventDefault()
     console.log("si estoy entrando")
 
     const schemaCredentials = {emailValue, passwordValue}
-    const URL_LOGIN = "https://back-end-cchavezmx.herokuapp.com/"
+    const URL_LOGIN = "https://back-end-cchavezmx.herokuapp.com/api/v1/login"
     console.log({schemaCredentials, URL_LOGIN})
     //lógica de autenticación
-    history.push("/home/surveyor")
+    // try {
+      // const respuesta = await fetch(URL_LOGIN,{method:'POST', headers:{ 'Content-Type': 'application/json'}, 
+          // mode: 'cors' , body: JSON.stringify(schemaCredentials) 
+      // })
+      // console.log(respuesta)
+      // const res = await respuesta.json()
+      // setToken(res.response)
+      // loginUser(res.response)
+      // console.log(res)
+      // history.push("/home/surveyor")
+    // } catch (error) {
+        // console.log(error)
+    // }
+    axios.post(URL_LOGIN, schemaCredentials).then( response => {
+      console.log(response)
+      history.push("/home/surveyor")
+    }).catch (e => {
+      console.log(e)
+    })
 
   }
 

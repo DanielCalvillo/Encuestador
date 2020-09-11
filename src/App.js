@@ -43,6 +43,7 @@ function App() {
         />
         <Route
           exact
+          //agregar id
           path="/survey"
           render={ routeProps => (
             <Encuesta {...routeProps}/>
